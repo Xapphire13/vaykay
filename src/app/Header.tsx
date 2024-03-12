@@ -6,7 +6,7 @@ export default function Header() {
     <header className={styles.container}>
       <h1 className={styles.brand}>Vaykay</h1>
 
-      <div className={styles.content}></div>
+      <div className={styles.content}>Menu</div>
     </header>
   );
 }

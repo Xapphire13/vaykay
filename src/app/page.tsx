@@ -1,11 +1,11 @@
 import MenuBar from "./MenuBar";
-import TripCard from "./TripCard";
+import TripGrid from "./TripGrid";
 
 export default function Home() {
   return (
     <>
       <MenuBar />
-      <TripCard />
+      <TripGrid />
     </>
   );
 }

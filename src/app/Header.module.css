@@ -15,4 +15,9 @@
 .content {
   flex-grow: 1;
   background-color: var(--green);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  color: var(--white);
+  padding: var(--spacing-large);
 }

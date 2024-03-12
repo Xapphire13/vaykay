@@ -9,6 +9,7 @@
   color: var(--white);
   padding: var(--spacing-large);
   border-right: var(--spacing-tiny) solid var(--white);
+  font-weight: bold;
 }
 
 .content {

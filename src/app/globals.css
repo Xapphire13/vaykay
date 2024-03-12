@@ -15,9 +15,11 @@
   --color-border-alt: var(--green);
 
   /* Fonts */
+  --font-size-large: 24px;
   --font-size-extra-large: 36px;
 
   /* Spacing */
+  --spacing-micro: 2px;
   --spacing-tiny: 4px;
   --spacing-small: 8px;
   --spacing-medium: 12px;

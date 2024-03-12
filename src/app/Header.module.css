@@ -1,0 +1,17 @@
+.container {
+  font-size: var(--font-size-large);
+  display: flex;
+  flex-direction: row;
+}
+
+.brand {
+  background-color: var(--pink);
+  color: var(--white);
+  padding: var(--spacing-large);
+  border-right: var(--spacing-tiny) solid var(--white);
+}
+
+.content {
+  flex-grow: 1;
+  background-color: var(--green);
+}

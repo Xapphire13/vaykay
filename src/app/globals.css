@@ -1,3 +1,18 @@
+:root {
+  /* Color Palette */
+  --white: #fff;
+  --green-tinted-white: #f7fffb;
+  --faint-green: #e7fff3;
+  --dark-green: #17965f;
+  --pink: #d2509a;
+
+  /* Semantic Colors */
+  --background: var(--faint-green);
+  --modal-background: var(--green-tinted-white);
+  --border-color: var(--pink);
+  --border-color-alt: var(--dark-green);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -8,6 +23,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: var(--background);
 }
 
 a {

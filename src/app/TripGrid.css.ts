@@ -1,10 +1,11 @@
 import { style } from "@vanilla-extract/css";
+import { theme } from "./theme.css";
 
 export const container = style({
-  padding: "var(--spacing-medium)",
+  padding: theme.spacing.small12px,
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
   justifyContent: "center",
-  gap: "var(--spacing-medium)",
+  gap: theme.spacing.small12px,
 });

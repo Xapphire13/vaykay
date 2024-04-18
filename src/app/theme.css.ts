@@ -1,4 +1,4 @@
-import { createGlobalTheme, createVar, globalStyle } from "@vanilla-extract/css";
+import { createGlobalTheme, createVar, fontFace, globalFontFace, globalStyle } from "@vanilla-extract/css";
 
 const pink900 = createVar();
 const pink800 = createVar();
@@ -98,6 +98,30 @@ export const theme = createGlobalTheme(":root", {
     border: pink500,
     buttonBorder: green500,
     white: "#FFF"
+  },
+  spacing: {
+    border: "2px",
+
+    small4px: "4px",
+    small8px: "8px",
+    small12px: "12px",
+    small16px: "16px",
+    
+    medium24px: "24px",
+    medium32px: "32px",
+  },
+  cornerRadius: {
+    medium: "16px"
+  },
+  typography: {
+    size: {
+      large: "24px",
+      extraLarge: "36px"
+    }
+  },
+  elevation: {
+    button: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
+    card: "0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12)"
   }
 });
 
@@ -114,7 +138,7 @@ globalStyle("html, body", {
 });
 
 globalStyle("html", {
-  fontFamily: '"Concert One", sans-serif',
+  fontFamily: `"Baloo 2", sans-serif`,
   fontWeight: 400,
   fontStyle: "normal",
 });

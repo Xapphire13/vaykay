@@ -3,7 +3,7 @@ import { theme } from "./theme.css";
 
 
 export const container = style({
-  fontSize: theme.typography.size.large,
+  fontSize: theme.typography.size.large24px,
   display: "flex",
   flexDirection: "row",
 });
@@ -11,9 +11,10 @@ export const container = style({
 export const brand =  style({
   backgroundColor: theme.palette.brand,
   color: theme.palette.white,
-  padding: theme.spacing.small16px,
+  padding: `${theme.spacing.small8px} ${theme.spacing.medium32px}`,
   borderRight: `${theme.spacing.small4px} solid ${theme.palette.white}`,
   fontWeight: "bold",
+  fontSize: theme.typography.size.large36px
 });
 
 export const content = style({

@@ -109,14 +109,15 @@ export const theme = createGlobalTheme(":root", {
     
     medium24px: "24px",
     medium32px: "32px",
+    medium48px: "48px",
   },
   cornerRadius: {
     medium: "16px"
   },
   typography: {
     size: {
-      large: "24px",
-      extraLarge: "36px"
+      large24px: "24px",
+      large36px: "36px",
     }
   },
   elevation: {

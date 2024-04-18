@@ -1,0 +1,24 @@
+.dropdown_menu {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown_button {
+    border: 2px solid green;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.dropdown_button:hover {
+    background-color: pink;
+}
+
+.dropdown_content {
+    display: none;
+    position: absolute;
+    overflow: auto;
+}
+
+.dropdown_menu:hover .dropdown_content {
+    display: block;
+  }

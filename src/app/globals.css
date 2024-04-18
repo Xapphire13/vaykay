@@ -1,19 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Concert+One&display=swap");
 
 :root {
-  /* Color Palette */
-  --white: #fff;
-  --green-tinted-white: #f7fffb;
-  --faint-green: #e7fff3;
-  --green: #17965f;
-  --pink: #d2509a;
-
-  /* Semantic Colors */
-  --color-background: var(--faint-green);
-  --color-modal-background: var(--green-tinted-white);
-  --color-border: var(--pink);
-  --color-border-alt: var(--green);
-
   /* Fonts */
   --font-size-large: 24px;
   --font-size-extra-large: 36px;
@@ -29,38 +16,4 @@
 
   /* Corner Radius */
   --corner-radius-medium: 16px;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html,
-body {
-  max-width: 100vw;
-  height: 100%;
-  overflow-x: hidden;
-}
-
-html {
-  font-family: "Concert One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-body {
-  background-color: var(--color-background);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
 }

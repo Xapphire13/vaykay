@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./MenuBar.module.css";
+import * as styles from "./MenuBar.css";
 
 export default function MenuBar() {
   return (

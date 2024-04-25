@@ -1,5 +1,5 @@
 import React from "react";
-import PrimaryMenuButton from "./PrimaryMenuButton";
+import AppMenuButton from "./AppMenuButton";
 import * as styles from "./Header.css";
 
 export default function Header() {
@@ -8,7 +8,7 @@ export default function Header() {
       <h1 className={styles.brand}>Vaykay</h1>
 
       <div className={styles.content}>
-        <PrimaryMenuButton />
+        <AppMenuButton />
       </div>
     </header>
   );

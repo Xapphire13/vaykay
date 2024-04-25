@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { theme } from "./theme.css";
+import { theme } from "../theme.css";
 
 export const container = style({
   display: "grid",
@@ -22,5 +22,5 @@ export const filters = style({
 
 export const actions = style({
   gridArea: "actions",
-  justifySelf: "right"
+  justifySelf: "right",
 });

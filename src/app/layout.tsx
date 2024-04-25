@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./theme.css";
-import Header from "./Header";
+import Header from "./Header/Header";
 
 export const metadata: Metadata = {
   title: "Vaykay Trip Planning",

@@ -1,10 +1,11 @@
 import React from "react";
 import { Search } from "react-bootstrap-icons";
+import IconButton from "../shared/IconButton";
 
 export default function SearchButton() {
   return (
-    <button name="search">
-      <Search size={32} color="#d2509a" />
-    </button>
+    <IconButton>
+      <Search size={32} />
+    </IconButton>
   );
 }

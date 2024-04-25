@@ -25,4 +25,5 @@ export const actions = style({
   gridArea: "actions",
   justifySelf: "right",
   gap: theme.spacing.small12px,
+  alignItems: "center",
 });

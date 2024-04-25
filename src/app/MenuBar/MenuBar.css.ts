@@ -21,6 +21,8 @@ export const filters = style({
 });
 
 export const actions = style({
+  display: "flex",
   gridArea: "actions",
   justifySelf: "right",
+  gap: theme.spacing.small12px,
 });

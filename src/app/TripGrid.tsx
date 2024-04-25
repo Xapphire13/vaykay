@@ -1,6 +1,6 @@
 import React from "react";
 import TripCard from "./TripCard";
-import styles from "./TripGrid.module.css";
+import * as styles from "./TripGrid.css";
 
 const NUMBER_OF_TRIPS = 3;
 

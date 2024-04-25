@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./MenuBar.module.css";
 import DropDownMenu from "./DropDownMenu";
+import * as styles from "./MenuBar.css";
 
 export default function MenuBar() {
   return (

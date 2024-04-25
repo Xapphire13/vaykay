@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
-import styles from "./TripCard.module.css";
+import * as styles from "./TripCard.css";
 
 export default function TripCard() {
   const router = useRouter();

@@ -1,7 +1,0 @@
-.container {
-  padding: var(--spacing-large);
-  border: var(--spacing-micro) solid var(--pink);
-  border-radius: var(--corner-radius-medium);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  background-color: var(--color-modal-background);
-}

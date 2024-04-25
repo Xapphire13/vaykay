@@ -6,10 +6,10 @@ export default function DropDownMenu() {
   return (
     <div className={styles.menu}>
       <button className={styles.button}>
-        Dropdown Choices{" "}
-        <span className={styles.chevron}>
+        <div className={styles.label}>Dropdown Choices</div>
+        <div className={styles.chevron}>
           <ChevronDown />
-        </span>
+        </div>
       </button>
       <ul className={styles.content}>
         <li className={styles.item}>Cats</li>

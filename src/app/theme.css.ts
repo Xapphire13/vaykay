@@ -1,4 +1,10 @@
-import { createGlobalTheme, createVar, fontFace, globalFontFace, globalStyle } from "@vanilla-extract/css";
+import {
+  createGlobalTheme,
+  createVar,
+  fontFace,
+  globalFontFace,
+  globalStyle,
+} from "@vanilla-extract/css";
 
 const pink900 = createVar();
 const pink800 = createVar();
@@ -30,25 +36,25 @@ const gray100 = createVar();
 
 globalStyle(":root", {
   vars: {
-    [pink900]: 'hsl(326, 84%, 15%)',
-    [pink800]: 'hsl(326, 62%, 25%)',
-    [pink700]: 'hsl(326, 68%, 36%)',
-    [pink600]: 'hsl(326, 62%, 45%)',
-    [pink500]: 'hsl(326, 59%, 57%)',
-    [pink400]: 'hsl(326, 68%, 72%)',
-    [pink300]: 'hsl(326, 89%, 86%)',
-    [pink200]: 'hsl(326, 100%, 97%)',
-    [pink100]: 'hsl(326, 100%, 99%)',
+    [pink900]: "hsl(326, 84%, 15%)",
+    [pink800]: "hsl(326, 62%, 25%)",
+    [pink700]: "hsl(326, 68%, 36%)",
+    [pink600]: "hsl(326, 62%, 45%)",
+    [pink500]: "hsl(326, 59%, 57%)",
+    [pink400]: "hsl(326, 68%, 72%)",
+    [pink300]: "hsl(326, 89%, 86%)",
+    [pink200]: "hsl(326, 100%, 97%)",
+    [pink100]: "hsl(326, 100%, 99%)",
 
-    [green900]: 'hsl(154, 92%, 10%)',
-    [green800]: 'hsl(154, 79%, 15%)',
-    [green700]: 'hsl(154, 78%, 20%)',
-    [green600]: 'hsl(154, 75%, 25%)',
-    [green500]: 'hsl(154, 73%, 34%)',
-    [green400]: 'hsl(154, 57%, 61%)',
-    [green300]: 'hsl(154, 79%, 87%)',
-    [green200]: 'hsl(154, 85%, 95%)',
-    [green100]: 'hsl(154, 80%, 98%)',
+    [green900]: "hsl(154, 92%, 10%)",
+    [green800]: "hsl(154, 79%, 15%)",
+    [green700]: "hsl(154, 78%, 20%)",
+    [green600]: "hsl(154, 75%, 25%)",
+    [green500]: "hsl(154, 73%, 34%)",
+    [green400]: "hsl(154, 57%, 61%)",
+    [green300]: "hsl(154, 79%, 87%)",
+    [green200]: "hsl(154, 85%, 95%)",
+    [green100]: "hsl(154, 80%, 98%)",
 
     [gray900]: "hsl(0, 0%, 16%)",
     [gray800]: "hsl(0, 0%, 28%)",
@@ -59,8 +65,8 @@ globalStyle(":root", {
     [gray300]: "hsl(0, 0%, 78%)",
     [gray200]: "hsl(0, 0%, 88%)",
     [gray100]: "hsl(0, 0%, 98%)",
-  }
-})
+  },
+});
 
 export const theme = createGlobalTheme(":root", {
   palette: {
@@ -97,7 +103,7 @@ export const theme = createGlobalTheme(":root", {
     modalBackground: green100,
     border: pink500,
     buttonBorder: green500,
-    white: "#FFF"
+    white: "#FFF",
   },
   spacing: {
     border: "2px",
@@ -106,30 +112,31 @@ export const theme = createGlobalTheme(":root", {
     small8px: "8px",
     small12px: "12px",
     small16px: "16px",
-    
+
     medium24px: "24px",
     medium32px: "32px",
     medium48px: "48px",
   },
   cornerRadius: {
-    medium: "16px"
+    medium: "16px",
   },
   typography: {
     size: {
       large24px: "24px",
       large36px: "36px",
-    }
+    },
   },
   elevation: {
     button: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
-    card: "0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12)"
-  }
+    card: "0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12)",
+  },
 });
 
 globalStyle("*", {
+  fontFamily: `"Baloo 2", sans-serif`,
   boxSizing: "border-box",
   padding: 0,
-  margin: 0
+  margin: 0,
 });
 
 globalStyle("html, body", {
@@ -139,22 +146,21 @@ globalStyle("html, body", {
 });
 
 globalStyle("html", {
-  fontFamily: `"Baloo 2", sans-serif`,
   fontWeight: 400,
   fontStyle: "normal",
 });
 
 globalStyle("body", {
-  backgroundColor: theme.palette.background
-})
+  backgroundColor: theme.palette.background,
+});
 
 globalStyle("a", {
   color: "inherit",
   textDecoration: "none",
-})
+});
 
 globalStyle("button", {
   background: "none",
   border: "none",
   cursor: "pointer",
-})
+});

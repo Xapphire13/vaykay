@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { theme } from "../theme.css";
 
 export const menu = style({
   display: "inline-block",
@@ -6,30 +7,38 @@ export const menu = style({
 });
 
 export const button = style({
-  backgroundColor: "#EBFCF4",
-  border: "2px solid #285A3B",
-  borderRadius: "12px",
-  padding: "10px 0 10px 5px",
+  backgroundColor: theme.palette.green200,
+  border: `${theme.spacing.border} solid ${theme.palette.buttonBorder}`,
+  borderRadius: theme.cornerRadius.medium,
+  display: "flex",
+  alignItems: "center",
+  overflow: "hidden",
 
   ":hover": {
-    backgroundColor: "#FCF1F8",
+    backgroundColor: theme.palette.pink200,
   },
 });
 
+export const label = style({
+  padding: `0 ${theme.spacing.small12px}`,
+  fontWeight: "bold",
+});
+
 export const chevron = style({
-  color: "#FEFAFD",
+  display: "flex",
+  alignItems: "center",
+  color: theme.palette.pink200,
   height: "100%",
-  borderRadius: "0 10px 10px 0",
-  backgroundColor: "#C35997",
-  padding: "10px",
+  backgroundColor: theme.palette.pink600,
+  padding: theme.spacing.small12px,
 });
 
 export const content = style({
   display: "none",
   position: "absolute",
   overflow: "auto",
-  backgroundColor: "#F7FEFA",
-  borderRadius: "10px",
+  backgroundColor: theme.palette.green100,
+  borderRadius: theme.cornerRadius.medium,
 
   selectors: {
     [`${menu}:hover &`]: {
@@ -39,9 +48,9 @@ export const content = style({
 });
 
 export const item = style({
-  padding: "2px 0 2px 5px",
+  padding: `${theme.spacing.small4px} ${theme.spacing.small8px}`,
 
   ":hover": {
-    backgroundColor: "#81D1A6",
+    backgroundColor: theme.palette.green400,
   },
 });

@@ -1,11 +1,15 @@
 import React from "react";
+import PrimaryMenuButton from "./PrimaryMenuButton";
 import * as styles from "./Header.css";
 
 export default function Header() {
   return (
     <header className={styles.container}>
-      <div className={styles.brand}>Vaykay</div>
-      <div className={styles.content}>Menu</div>
+      <h1 className={styles.brand}>Vaykay</h1>
+
+      <div className={styles.content}>
+        <PrimaryMenuButton />
+      </div>
     </header>
   );
 }

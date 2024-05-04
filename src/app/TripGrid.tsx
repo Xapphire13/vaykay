@@ -1,14 +1,36 @@
 import React from "react";
-import TripCard from "./TripCard";
+import TripCard, { TripCardProps } from "./TripCard";
 import * as styles from "./TripGrid.css";
 
-const NUMBER_OF_TRIPS = 3;
+const MOCK_TRIPS: TripCardProps[] = [
+  {
+    location: "Tasmania",
+    travelers: "Emma, Johnny, Alex, Winter",
+    startDate: "August-24-2050",
+    endDate: "September-15-2050",
+    title: "Tazzy Time",
+  },
+  {
+    location: "France, England, Belguim",
+    travelers: "solo",
+    startDate: "May-8-2028",
+    endDate: "May-28-2028",
+    title: "Europe Solo Trip",
+  },
+];
 
 export default function TripGrid() {
   return (
     <div className={styles.container}>
-      {new Array(NUMBER_OF_TRIPS).fill(null).map((_, i) => (
-        <TripCard key={i} />
+      {MOCK_TRIPS.map((trip, i) => (
+        <TripCard
+          key={i}
+          location={trip.location}
+          travelers={trip.travelers}
+          startDate={trip.startDate}
+          endDate={trip.endDate}
+          title={trip.title}
+        />
       ))}
     </div>
   );

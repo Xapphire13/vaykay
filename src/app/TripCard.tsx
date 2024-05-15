@@ -5,6 +5,7 @@ import * as styles from "./TripCard.css";
 import { ArrowRight } from "react-bootstrap-icons";
 
 export interface TripCardProps {
+  image: string;
   location: string;
   travelers: string;
   startDate: string;
@@ -13,6 +14,7 @@ export interface TripCardProps {
 }
 
 export default function TripCard({
+  image,
   location,
   travelers,
   startDate,
@@ -27,9 +29,10 @@ export default function TripCard({
 
   return (
     <button tabIndex={0} className={styles.container} onClick={handleClick}>
-      <div>
+      <div className={styles.containerContent}>
+        <img src={image} className={styles.cardImg}></img>
         <div>
-          <h2>{location}</h2>
+          <h2 className={styles.location}>{location}</h2>
           <h2>{travelers}</h2>
           <div className={styles.date}>
             <h3>{endDate}</h3>

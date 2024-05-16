@@ -1,3 +1,10 @@
+import SideMenu from "./SideMenu";
+
 export default function Trip() {
-  return <main>Trip page</main>;
+  return (
+    <>
+      <SideMenu></SideMenu>
+      <main>Trip page</main>
+    </>
+  );
 }

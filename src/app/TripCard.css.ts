@@ -2,49 +2,41 @@ import { style } from "@vanilla-extract/css";
 import { theme } from "./theme.css";
 
 export const container = style({
-  paddingBottom: "0",
   borderRadius: theme.cornerRadius.medium,
   boxShadow: theme.elevation.card,
   backgroundColor: theme.palette.modalBackground,
   width: "480px",
-  height: "450px",
   display: "flex",
-  alignItems: "start",
-  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
+  gap: theme.spacing.small16px,
+  overflow: "hidden",
 });
 
 export const cardImg = style({
-  borderRadius: "16px 16px 0 0",
   width: "480px",
   height: "300px",
 });
 
-export const containerContent = style({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-});
-
-export const location = style({
-  paddingTop: theme.spacing.small12px,
+export const details = style({
+  fontSize: theme.typography.size.large20px
 });
 
 export const title = style({
-  background: "linear-gradient(90deg, rgba(232,135,190,1) 66%, rgba(251,187,224,1) 94%)",
+  background: `linear-gradient(to right, ${theme.palette.pink500}, ${theme.palette.pink400})`,
   color: theme.palette.pink100,
-  borderRadius: "0 0 16px 16px",
-  margin: "8px -16px -400px -16px",
-  padding: "8px",
+  padding: theme.spacing.small8px,
   width: "480px",
+  fontWeight: "bold",
+  fontSize: theme.typography.size.large24px
 });
 
 export const date = style({
   display: "flex",
   flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "end",
-});
-
-export const dateArrow = style({
-  padding: "0 8px",
+  justifyContent: 'center',
+  alignItems: "center",
+  gap: theme.spacing.small8px,
+  fontWeight: 600,
+  fontSize: theme.typography.size.large20px
 });

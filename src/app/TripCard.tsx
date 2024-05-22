@@ -29,22 +29,18 @@ export default function TripCard({
 
   return (
     <button tabIndex={0} className={styles.container} onClick={handleClick}>
-      <div className={styles.containerContent}>
-        <img src={image} className={styles.cardImg}></img>
-        <div>
-          <h2 className={styles.location}>{location}</h2>
-          <h2>{travelers}</h2>
-          <div className={styles.date}>
-            <h3>{endDate}</h3>
-            <div className={styles.dateArrow}>
-              <ArrowRight />
-            </div>
-            <h3>{startDate}</h3>
-          </div>
+      <img src={image} className={styles.cardImg}></img>
+      <div className={styles.details}>
+        <div>{location}</div>
+        <div>{travelers}</div>
+        <div className={styles.date}>
+          <div>{endDate}</div>
+          <ArrowRight />
+          <div>{startDate}</div>
         </div>
-        <div className={styles.title}>
-          <h3>{title}</h3>
-        </div>
+      </div>
+      <div className={styles.title}>
+        <div>{title}</div>
       </div>
     </button>
   );

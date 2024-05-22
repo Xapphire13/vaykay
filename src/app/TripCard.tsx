@@ -8,8 +8,8 @@ export interface TripCardProps {
   image: string;
   location: string;
   travelers: string;
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
   title: string;
 }
 
@@ -29,14 +29,14 @@ export default function TripCard({
 
   return (
     <button tabIndex={0} className={styles.container} onClick={handleClick}>
-      <img src={image} className={styles.cardImg}></img>
+      <img src={image} className={styles.cardImg} />
       <div className={styles.details}>
         <div>{location}</div>
         <div>{travelers}</div>
         <div className={styles.date}>
-          <div>{endDate}</div>
+          <div>{startDate.toISOString()}</div>
           <ArrowRight />
-          <div>{startDate}</div>
+          <div>{endDate.toISOString()}</div>
         </div>
       </div>
       <div className={styles.title}>

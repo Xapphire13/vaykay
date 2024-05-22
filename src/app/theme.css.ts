@@ -122,6 +122,7 @@ export const theme = createGlobalTheme(":root", {
   },
   typography: {
     size: {
+      large20px: "20px",
       large24px: "24px",
       large36px: "36px",
     },

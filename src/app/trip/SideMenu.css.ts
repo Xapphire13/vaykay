@@ -10,9 +10,22 @@ export const container = style({
    width: "100px",
    marginTop: "125px",
    fontSize: theme.typography.size.large36px,
+   display: "flex",
+   flexDirection: "column",
+   alignItems: "center",
+   justifyContent: "center",
   });
 
   export const icon = style({
    color: theme.palette.pink100,
-   fontSize: "40px",
+   height: "64px",
+   width: "64px",
+   paddingTop: theme.spacing.small16px,
+   paddingBottom: theme.spacing.small8px,
+  });
+
+  export const line = style({
+   border: `2px solid ${theme.palette.pink100}`,
+   width: "100px",
+  
   });

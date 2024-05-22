@@ -4,7 +4,7 @@ import * as styles from "./SideMenu.css";
 import { Hospital } from "react-bootstrap-icons";
 import { AirplaneEngines } from "react-bootstrap-icons";
 import { House } from "react-bootstrap-icons";
-import { BusFrontFill } from "react-bootstrap-icons";
+import { BusFront } from "react-bootstrap-icons";
 import { Passport } from "react-bootstrap-icons";
 import { TicketPerforated } from "react-bootstrap-icons";
 import { CupStraw } from "react-bootstrap-icons";
@@ -19,43 +19,43 @@ export default function SideMenu() {
       <button>
         <Hospital className={styles.icon}></Hospital>
       </button>
-      <hr></hr>
+      <hr className={styles.line}></hr>
       <button className={styles.icon}>
         <AirplaneEngines></AirplaneEngines>
       </button>
-      <hr></hr>
+      <hr className={styles.line}></hr>
       <button>
         <House className={styles.icon}></House>
       </button>
-      <hr></hr>
+      <hr className={styles.line}></hr>
       <button>
-        <BusFrontFill className={styles.icon}></BusFrontFill>
+        <BusFront className={styles.icon}></BusFront>
       </button>
-      <hr></hr>
+      <hr className={styles.line}></hr>
       <button>
         <Passport className={styles.icon}></Passport>
       </button>
-      <hr></hr>
+      <hr className={styles.line}></hr>
       <button>
         <TicketPerforated className={styles.icon}></TicketPerforated>
       </button>
-      <hr></hr>
+      <hr className={styles.line}></hr>
       <button>
         <CupStraw className={styles.icon}></CupStraw>
       </button>
-      <hr></hr>
+      <hr className={styles.line}></hr>
       <button>
         <Cash className={styles.icon}></Cash>
       </button>
-      <hr></hr>
+      <hr className={styles.line}></hr>
       <button>
         <SuitcaseLg className={styles.icon}></SuitcaseLg>
       </button>
-      <hr></hr>
+      <hr className={styles.line}></hr>
       <button>
         <FileEarmarkCheckFill className={styles.icon}></FileEarmarkCheckFill>
       </button>
-      <hr></hr>
+      <hr className={styles.line}></hr>
       <button>
         <Map className={styles.icon}></Map>
       </button>

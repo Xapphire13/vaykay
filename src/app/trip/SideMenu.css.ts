@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { theme } from "../theme.css";
 
 export const container = style({
@@ -6,7 +6,7 @@ export const container = style({
    padding: theme.spacing.medium32px,
    borderRadius: "0 16px 16px 0",
    color: theme.palette.pink100,
-   height: "800px",
+   //height: "800px",
    width: "100px",
    marginTop: "125px",
    fontSize: theme.typography.size.large36px,
@@ -14,6 +14,12 @@ export const container = style({
    flexDirection: "column",
    alignItems: "center",
    justifyContent: "center",
+  });
+
+  export const indvContainer = style({
+   ":hover": {
+      backgroundColor: "#8968e3",
+    },
   });
 
   export const icon = style({
@@ -25,7 +31,24 @@ export const container = style({
   });
 
   export const line = style({
-   border: `2px solid ${theme.palette.pink100}`,
+   borderTop: `1px solid ${theme.palette.pink100}`,
    width: "100px",
   
   });
+
+  export const description = style({
+   display: "none",
+   position: "absolute",
+   fontSize: theme.spacing.medium24px,
+   left: "100px",
+   padding: theme.spacing.small12px,
+  });
+
+  globalStyle(`${indvContainer}:hover ${description}`, {
+   display: "block",
+   backgroundColor: theme.palette.pink100,
+   color: theme.palette.gray800,
+  });
+
+
+  

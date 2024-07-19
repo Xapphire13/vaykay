@@ -4,7 +4,7 @@ import { theme } from "../theme.css";
 export const container = style({
    background: theme.palette.pink500,
    padding: theme.spacing.medium32px,
-   borderRadius: "0 16px 16px 0",
+   borderRadius: `0 ${theme.cornerRadius.medium} ${theme.cornerRadius.medium} 0`,
    color: theme.palette.pink100,
    width: "100px",
    marginTop: "125px",

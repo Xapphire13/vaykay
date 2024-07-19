@@ -6,7 +6,6 @@ export const container = style({
    padding: theme.spacing.medium32px,
    borderRadius: "0 16px 16px 0",
    color: theme.palette.pink100,
-   //height: "800px",
    width: "100px",
    marginTop: "125px",
    fontSize: theme.typography.size.large36px,

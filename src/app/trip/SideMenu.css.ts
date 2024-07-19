@@ -51,6 +51,3 @@ export const container = style({
    backgroundColor: theme.palette.pink100,
    color: theme.palette.gray800,
   });
-
-
-  

@@ -1,6 +1,6 @@
 import SideMenu from "./SideMenu";
 
-export default function Trip() {
+export default function trip() {
   return (
     <>
       <SideMenu></SideMenu>

@@ -20,6 +20,9 @@ export const container = style({
    ":hover": {
       backgroundColor: "#8968e3",
     },
+    display: "flex",
+    flexDirection: "column",
+    width: "100px",
   });
 
   export const icon = style({

@@ -22,6 +22,7 @@ export const container = style({
     display: "flex",
     flexDirection: "column",
     width: "100px",
+    borderBottom: `medium solid ${theme.palette.pink100}`,
   });
 
   export const icon = style({
@@ -30,12 +31,6 @@ export const container = style({
    width: "64px",
    paddingTop: theme.spacing.small16px,
    paddingBottom: theme.spacing.small8px,
-  });
-
-  export const line = style({
-   borderTop: `1px solid ${theme.palette.pink100}`,
-   width: "100px",
-  
   });
 
   export const description = style({

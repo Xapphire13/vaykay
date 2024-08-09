@@ -8,8 +8,8 @@ interface TripLayoutProps {
 export default function TripLayout({ tabs }: TripLayoutProps) {
   return (
     <div className={styles.container}>
-      <SideMenu />
-      <div>{tabs}</div>
+      <SideMenu className={styles.sideNav} />
+      <div className={styles.tabsContainer}>{tabs}</div>
     </div>
   );
 }

@@ -14,7 +14,7 @@ export default function Map() {
       zoom={13}
       touchZoom
       scrollWheelZoom
-      style={{ height: "400px" }}
+      style={{ height: "100%" }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

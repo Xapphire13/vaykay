@@ -60,6 +60,7 @@ export default function SideMenu() {
       <SideMenuChoice
         icon={<Map className={styles.icon} />}
         iconText="Map View"
+        href="/trip/map"
       />
     </div>
   );

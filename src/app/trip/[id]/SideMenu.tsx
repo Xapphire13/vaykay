@@ -14,68 +14,70 @@ import { FileEarmarkCheckFill } from "react-bootstrap-icons";
 import { Map } from "react-bootstrap-icons";
 import SideMenuChoice from "./SideMenuChoice";
 import classNames from "classnames";
+import { useParams } from "next/navigation";
 
 interface SideMenuProps {
+  tripId: string;
   className?: string;
 }
 
-export default function SideMenu({ className }: SideMenuProps) {
+export default function SideMenu({ tripId, className }: SideMenuProps) {
   return (
     <div className={classNames(styles.container, className)}>
       <SideMenuChoice
         icon={<Hospital className={styles.icon} />}
         iconText="Emergency Numbers"
-        href="/trip/numbers"
+        href={`/trip/${tripId}/numbers`}
       />
       <SideMenuChoice
         icon={<AirplaneEngines className={styles.icon} />}
         iconText="Flights"
-        href="/trip/flights"
+        href={`/trip/${tripId}/flights`}
       />
       <SideMenuChoice
         icon={<House className={styles.icon} />}
         iconText="Accommodation"
-        href="/trip/accommodation"
+        href={`/trip/${tripId}/accommodation`}
       />
       <SideMenuChoice
         icon={<BusFront className={styles.icon} />}
         iconText="Transportation"
-        href="/trip/transport"
+        href={`/trip/${tripId}/transport`}
       />
       <SideMenuChoice
         icon={<Passport className={styles.icon} />}
         iconText="Important Docs"
-        href="/trip/docs"
+        href={`/trip/${tripId}/docs`}
       />
       <SideMenuChoice
         icon={<TicketPerforated className={styles.icon} />}
         iconText="Booked Activities"
-        href="/trip/activities"
+        href={`/trip/${tripId}/activities`}
       />
       <SideMenuChoice
         icon={<CupStraw className={styles.icon} />}
         iconText="Dining"
-        href="/trip/dining"
+        href={`/trip/${tripId}/dining`}
       />
       <SideMenuChoice
         icon={<Cash className={styles.icon} />}
         iconText="Cost Breakdown"
-        href="/trip/cost"
+        href={`/trip/${tripId}/cost`}
       />
       <SideMenuChoice
         icon={<SuitcaseLg className={styles.icon} />}
         iconText="Packing Checklist"
-        href="/trip/packing"
+        href={`/trip/${tripId}/packing`}
       />
       <SideMenuChoice
         icon={<FileEarmarkCheckFill className={styles.icon} />}
         iconText="Itinerary"
-        href="/trip/itinerary"
+        href={`/trip/${tripId}/itinerary`}
       />
       <SideMenuChoice
         icon={<Map className={styles.icon} />}
         iconText="Map View"
-        href="/trip/map"
+        href={`/trip/${tripId}/map`}
       />
     </div>
   );

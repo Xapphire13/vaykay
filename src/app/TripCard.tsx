@@ -1,10 +1,8 @@
-"use client";
-import { useRouter } from "next/navigation";
-import React from "react";
 import * as styles from "./TripCard.css";
 import { ArrowRight } from "react-bootstrap-icons";
 import { Trip } from "./hooks/useGetTrips";
 import { format } from "date-fns/format";
+import Link from "next/link";
 
 export interface TripCardProps {
   image: string;
@@ -13,14 +11,9 @@ export interface TripCardProps {
 
 export default function TripCard({ image, trip }: TripCardProps) {
   const { location, name, startDate, endDate } = trip;
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push(`/trip/${trip.id}`);
-  };
 
   return (
-    <button tabIndex={0} className={styles.container} onClick={handleClick}>
+    <Link tabIndex={0} className={styles.container} href={`/trip/${trip.id}`}>
       <img src={image} className={styles.cardImg} />
       <div className={styles.details}>
         <div>{location}</div>
@@ -34,6 +27,6 @@ export default function TripCard({ image, trip }: TripCardProps) {
       <div className={styles.title}>
         <div>{name}</div>
       </div>
-    </button>
+    </Link>
   );
 }

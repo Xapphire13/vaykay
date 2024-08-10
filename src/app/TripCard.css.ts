@@ -19,7 +19,8 @@ export const cardImg = style({
 });
 
 export const details = style({
-  fontSize: theme.typography.size.large20px
+  fontSize: theme.typography.size.large20px,
+  textAlign: "center",
 });
 
 export const title = style({
@@ -28,15 +29,16 @@ export const title = style({
   padding: theme.spacing.small8px,
   width: "480px",
   fontWeight: "bold",
-  fontSize: theme.typography.size.large24px
+  fontSize: theme.typography.size.large24px,
+  textAlign: "center",
 });
 
 export const date = style({
   display: "flex",
   flexDirection: "row",
-  justifyContent: 'center',
+  justifyContent: "center",
   alignItems: "center",
   gap: theme.spacing.small8px,
   fontWeight: 600,
-  fontSize: theme.typography.size.large20px
+  fontSize: theme.typography.size.large20px,
 });

@@ -3,8 +3,8 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import * as styles from "./TripCard.css";
 import { ArrowRight } from "react-bootstrap-icons";
-import { DateTime } from "luxon";
 import { Trip } from "./hooks/useGetTrips";
+import { format } from "date-fns/format";
 
 export interface TripCardProps {
   image: string;
@@ -26,13 +26,9 @@ export default function TripCard({ image, trip }: TripCardProps) {
         <div>{location}</div>
         <div>Bingo and Bluey</div>
         <div className={styles.date}>
-          <div>
-            {DateTime.fromJSDate(startDate).toLocaleString(DateTime.DATE_MED)}
-          </div>
+          <div>{format(startDate, "PP")}</div>
           <ArrowRight />
-          <div>
-            {DateTime.fromJSDate(endDate).toLocaleString(DateTime.DATE_MED)}
-          </div>
+          <div>{format(endDate, "PP")}</div>
         </div>
       </div>
       <div className={styles.title}>

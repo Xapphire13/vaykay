@@ -1,9 +1,9 @@
 import { style } from "@vanilla-extract/css";
-import { backgroundColor } from "../shared/IconButton.css";
+import iconButtonStyles from "../shared/IconButton.css";
 import { theme } from "../theme.css";
 
 export const container = style({
   vars: {
-    [backgroundColor]: theme.palette.gray200,
+    [iconButtonStyles.backgroundColor]: theme.palette.gray200,
   },
 });

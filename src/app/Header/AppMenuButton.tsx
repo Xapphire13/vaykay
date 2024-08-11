@@ -5,7 +5,7 @@ import * as styles from "./AppMenuButton.css";
 
 export default function AppMenuButton() {
   return (
-    <IconButton className={styles.container}>
+    <IconButton label="Main menu" className={styles.container}>
       <List size={40} color="white" />
     </IconButton>
   );

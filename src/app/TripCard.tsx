@@ -3,6 +3,7 @@ import { ArrowRight } from "react-bootstrap-icons";
 import { Trip } from "./hooks/useGetTrips";
 import { format } from "date-fns/format";
 import Link from "next/link";
+import { isEqual } from "date-fns";
 
 export interface TripCardProps {
   image: string;
@@ -18,11 +19,17 @@ export default function TripCard({ image, trip }: TripCardProps) {
       <div className={styles.details}>
         <div>{location}</div>
         <div>Bingo and Bluey</div>
-        <div className={styles.date}>
-          <div>{format(startDate, "PP")}</div>
-          <ArrowRight />
-          <div>{format(endDate, "PP")}</div>
-        </div>
+        {startDate && (
+          <div className={styles.date}>
+            <div>{format(startDate, "PP")}</div>
+            {endDate && !isEqual(endDate, startDate) && (
+              <>
+                <ArrowRight />
+                <div>{format(endDate, "PP")}</div>
+              </>
+            )}
+          </div>
+        )}
       </div>
       <div className={styles.title}>
         <div>{name}</div>

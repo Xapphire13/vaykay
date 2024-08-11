@@ -5,7 +5,7 @@ interface CheckboxProps {
 
 export default function Checkbox({ label, onChange }: CheckboxProps) {
   return (
-    <>
+    <div>
       <label>
         <input
           type="checkbox"
@@ -13,7 +13,6 @@ export default function Checkbox({ label, onChange }: CheckboxProps) {
         />{" "}
         {label}
       </label>
-      <br />
-    </>
+    </div>
   );
 }

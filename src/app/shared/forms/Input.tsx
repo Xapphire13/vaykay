@@ -16,7 +16,7 @@ export default function Input({
   required,
 }: InputProps) {
   return (
-    <>
+    <div>
       <label>
         <div className={formStyles.label}>{label}</div>
         {hint && <div className={formStyles.hint}>{hint}</div>}
@@ -27,7 +27,6 @@ export default function Input({
           required={required}
         />
       </label>
-      <br />
-    </>
+    </div>
   );
 }

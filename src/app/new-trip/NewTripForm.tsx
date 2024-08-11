@@ -7,6 +7,7 @@ import InputList from "../shared/forms/InputList";
 import formStyles from "../shared/forms/forms.css";
 import PrimaryButton from "../shared/PrimaryButton";
 import createNewTrip from "../database/trips";
+import styles from "./NewTripForm.css";
 
 export default function NewTripForm() {
   const [showDateRange, setShowDateRange] = useState(true);
@@ -16,7 +17,7 @@ export default function NewTripForm() {
   };
 
   return (
-    <form action={createNewTrip}>
+    <form className={styles.container} action={createNewTrip}>
       <Input
         required
         label="Name your trip"
@@ -24,9 +25,11 @@ export default function NewTripForm() {
         placeholder="Ex. Best vaycay ever!"
       />
 
-      <div className={formStyles.label}>When is it?</div>
-      {showDateRange && <DateRange name="dates" />}
-      <Checkbox label="Unsure" onChange={handleDatesUnsureChanged} />
+      <div>
+        <div className={formStyles.label}>When is it?</div>
+        {showDateRange && <DateRange name="dates" />}
+        <Checkbox label="Unsure" onChange={handleDatesUnsureChanged} />
+      </div>
 
       <InputList
         label="Where are you going?"
@@ -40,7 +43,9 @@ export default function NewTripForm() {
         placeholder="Enter email..."
       />
 
-      <PrimaryButton type="submit">Submit</PrimaryButton>
+      <PrimaryButton className={styles.submitButton} type="submit">
+        Submit
+      </PrimaryButton>
     </form>
   );
 }

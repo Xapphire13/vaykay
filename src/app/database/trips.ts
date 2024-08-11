@@ -9,19 +9,29 @@ const nanoid = customAlphabet(alphanumeric, 6);
 
 export type Trip = Awaited<ReturnType<typeof fetchTrips>>[number];
 
+const TRIP_SELECT_EXPRESSION = [
+  "trip_id as id",
+  "name",
+  "location",
+  "start_date as startDate",
+  "end_date as endDate",
+] as const;
+
 export async function fetchTrips() {
   const rows = await db
     .selectFrom("trips")
-    .select([
-      "trip_id as id",
-      "name",
-      "location",
-      "start_date as startDate",
-      "end_date as endDate",
-    ])
+    .select(TRIP_SELECT_EXPRESSION)
     .execute();
 
   return rows;
+}
+
+export async function getTrip(id: string) {
+  return await db
+    .selectFrom("trips")
+    .select(TRIP_SELECT_EXPRESSION)
+    .where("trip_id", "=", id)
+    .executeTakeFirst();
 }
 
 export async function deleteTrip(id: string) {

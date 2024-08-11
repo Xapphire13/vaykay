@@ -1,20 +1,18 @@
-"use client";
-import { deleteTrip } from "@/app/database/trips";
-import PrimaryButton from "@/app/shared/PrimaryButton";
-import { useParams, useRouter } from "next/navigation";
+import { getTrip } from "@/app/database/trips";
+import DeleteTripButton from "./DeleteTripButton";
+import styles from "./page.css";
 
-export default function TripPage() {
-  const router = useRouter();
-  const { id } = useParams<{ id: string }>();
+interface TripPageProps {
+  params: { id: string };
+}
 
-  const handleDeleteTrip = async () => {
-    await deleteTrip(id);
-    router.replace("/");
-  };
+export default async function TripPage({ params: { id } }: TripPageProps) {
+  const trip = await getTrip(id);
 
   return (
-    <div>
-      <PrimaryButton onPress={handleDeleteTrip}>Delete trip</PrimaryButton>
+    <div className={styles.container}>
+      <h1>{trip?.name}</h1>
+      <DeleteTripButton tripId={id} />
     </div>
   );
 }

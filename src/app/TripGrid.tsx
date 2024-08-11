@@ -1,10 +1,10 @@
 import React from "react";
 import TripCard, { TripCardProps } from "./TripCard";
 import * as styles from "./TripGrid.css";
-import useGetTrips from "./hooks/useGetTrips";
+import { fetchTrips } from "./database/trips";
 
 export default async function TripGrid() {
-  const trips = await useGetTrips();
+  const trips = await fetchTrips();
 
   return (
     <div className={styles.container}>

@@ -1,6 +1,6 @@
 import * as styles from "./TripCard.css";
 import { ArrowRight } from "react-bootstrap-icons";
-import { Trip } from "./hooks/useGetTrips";
+import { Trip } from "./hooks/fetchTrips";
 import { format } from "date-fns/format";
 import Link from "next/link";
 import { isEqual } from "date-fns";

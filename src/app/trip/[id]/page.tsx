@@ -1,6 +1,6 @@
 "use client";
+import { deleteTrip } from "@/app/database/trips";
 import PrimaryButton from "@/app/shared/PrimaryButton";
-import { deleteTrip } from "./deleteTrip";
 import { useParams, useRouter } from "next/navigation";
 
 export default function TripPage() {

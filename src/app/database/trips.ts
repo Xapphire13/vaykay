@@ -1,15 +1,50 @@
 "use server";
-
+import db from ".";
+import { revalidatePath } from "next/cache";
 import { customAlphabet } from "nanoid";
 import alphanumeric from "nanoid-dictionary/alphanumeric";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import db from "../database";
 
 const nanoid = customAlphabet(alphanumeric, 6);
 
+export type Trip = Awaited<ReturnType<typeof fetchTrips>>[number];
+
+export async function fetchTrips() {
+  const rows = await db
+    .selectFrom("trips")
+    .select([
+      "trip_id as id",
+      "name",
+      "location",
+      "start_date as startDate",
+      "end_date as endDate",
+    ])
+    .execute();
+
+  return rows;
+}
+
+export async function deleteTrip(id: string) {
+  await db.deleteFrom("trips").where("trip_id", "=", id).execute();
+  revalidatePath("/");
+}
+
 export default async function createNewTrip(formData: FormData) {
-  const id = nanoid();
+  let id;
+
+  do {
+    const newId = nanoid();
+    const res = await db
+      .selectFrom("trips")
+      .select("trip_id")
+      .where("trip_id", "=", newId)
+      .executeTakeFirst();
+
+    if (!res) {
+      id = newId;
+    }
+  } while (!id);
+
   const name = formData.get("name")?.toString();
   const startDate = formData.get("dates_start")?.toString();
   const endDate = formData.get("dates_end")?.toString();

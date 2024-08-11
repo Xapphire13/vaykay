@@ -6,7 +6,7 @@ import Input from "../shared/forms/Input";
 import InputList from "../shared/forms/InputList";
 import formStyles from "../shared/forms/forms.css";
 import PrimaryButton from "../shared/PrimaryButton";
-import createNewTrip from "./createNewTrip";
+import createNewTrip from "../database/trips";
 
 export default function NewTripForm() {
   const [showDateRange, setShowDateRange] = useState(true);

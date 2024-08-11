@@ -1,8 +1,6 @@
 import {
   createGlobalTheme,
   createVar,
-  fontFace,
-  globalFontFace,
   globalStyle,
 } from "@vanilla-extract/css";
 

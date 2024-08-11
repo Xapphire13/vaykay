@@ -1,5 +1,5 @@
 import React from "react";
-import TripCard, { TripCardProps } from "./TripCard";
+import TripCard from "./TripCard";
 import * as styles from "./TripGrid.css";
 import { fetchTrips } from "./database/trips";
 

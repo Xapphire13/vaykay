@@ -1,9 +1,9 @@
 import * as styles from "./TripCard.css";
 import { ArrowRight } from "react-bootstrap-icons";
-import { Trip } from "./hooks/fetchTrips";
 import { format } from "date-fns/format";
 import Link from "next/link";
 import { isEqual } from "date-fns";
+import type { Trip } from "./database/trips";
 
 export interface TripCardProps {
   image: string;
@@ -15,7 +15,7 @@ export default function TripCard({ image, trip }: TripCardProps) {
 
   return (
     <Link tabIndex={0} className={styles.container} href={`/trip/${trip.id}`}>
-      <img src={image} className={styles.cardImg} />
+      <img src={image} className={styles.cardImg} alt="Trip image" />
       <div className={styles.details}>
         <div>{location}</div>
         <div>Bingo and Bluey</div>

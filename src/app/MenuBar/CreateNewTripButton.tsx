@@ -4,7 +4,7 @@ import IconButton from "../shared/IconButton";
 
 export default function CreateNewTripButton() {
   return (
-    <IconButton href="/new-trip">
+    <IconButton label="New trip" href="/new-trip">
       <PlusSquare size={32} />
     </IconButton>
   );

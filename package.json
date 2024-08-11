@@ -33,6 +33,7 @@
     "@vanilla-extract/next-plugin": "^2.4.0",
     "eslint": "8.57",
     "eslint-config-next": "^14.2.5",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-eslint": "^8.0.1"
   }
 }

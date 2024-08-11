@@ -1,4 +1,4 @@
-import { ColumnType } from "kysely";
+import type { ColumnType } from "kysely";
 
 export default interface TripsTable {
   trip_id: string;

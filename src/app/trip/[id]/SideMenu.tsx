@@ -14,7 +14,6 @@ import { FileEarmarkCheckFill } from "react-bootstrap-icons";
 import { Map } from "react-bootstrap-icons";
 import SideMenuChoice from "./SideMenuChoice";
 import classNames from "classnames";
-import { useParams } from "next/navigation";
 
 interface SideMenuProps {
   tripId: string;

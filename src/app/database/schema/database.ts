@@ -1,4 +1,4 @@
-import TripsTable from "./trips-table";
+import type TripsTable from "./trips-table";
 
 export default interface Database {
   trips: TripsTable;

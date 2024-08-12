@@ -1,9 +1,9 @@
 import type { BaseButtonProps } from "./BaseButton";
 import BaseButton from "./BaseButton";
-import styles from "./PrimaryButton.css";
+import styles from "./SecondaryButton.css";
 
-type PrimaryButtonProps = BaseButtonProps;
+type SecondaryButtonProps = BaseButtonProps;
 
-export default function PrimaryButton(props: PrimaryButtonProps) {
+export default function SecondaryButton(props: SecondaryButtonProps) {
   return <BaseButton {...props} className={styles.container} />;
 }

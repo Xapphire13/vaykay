@@ -6,6 +6,7 @@ interface InputProps {
   hint?: string;
   placeholder?: string;
   required?: boolean;
+  type?: "text" | "password" | "email";
 }
 
 export default function Input({
@@ -14,6 +15,7 @@ export default function Input({
   hint,
   placeholder,
   required,
+  type = "text",
 }: InputProps) {
   return (
     <div>
@@ -22,7 +24,7 @@ export default function Input({
         {hint && <div className={formStyles.hint}>{hint}</div>}
         <input
           name={name}
-          type="text"
+          type={type}
           placeholder={placeholder}
           required={required}
         />

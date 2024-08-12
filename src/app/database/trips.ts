@@ -1,11 +1,8 @@
 "use server";
 import db from ".";
 import { revalidatePath } from "next/cache";
-import { customAlphabet } from "nanoid";
-import alphanumeric from "nanoid-dictionary/alphanumeric";
 import { redirect } from "next/navigation";
-
-const nanoid = customAlphabet(alphanumeric, 6);
+import { generateNewId } from "./utils/id-utils";
 
 export type Trip = Awaited<ReturnType<typeof fetchTrips>>[number];
 
@@ -40,28 +37,21 @@ export async function deleteTrip(id: string) {
 }
 
 export default async function createNewTrip(formData: FormData) {
-  let id;
-
-  do {
-    const newId = nanoid();
+  const id = await generateNewId(async (newId) => {
     const res = await db
       .selectFrom("trips")
       .select("trip_id")
       .where("trip_id", "=", newId)
       .executeTakeFirst();
 
-    if (!res) {
-      id = newId;
-    }
-  } while (!id);
+    return !!res;
+  });
 
   const name = formData.get("name")?.toString();
   const startDate = formData.get("dates_start")?.toString();
   const endDate = formData.get("dates_end")?.toString();
 
-  if (!name) {
-    throw new Error("Trip name is required");
-  }
+  if (!name) throw new Error("Trip name is required");
 
   try {
     await db

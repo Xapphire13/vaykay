@@ -3,9 +3,8 @@ import { theme } from "../theme.css";
 
 export default {
   container: style({
-    background: theme.palette.green200,
-    ":hover": {
-      background: theme.palette.pink200,
-    },
+    display: "flex",
+    flexDirection: "row",
+    gap: theme.spacing.small8px,
   }),
 };

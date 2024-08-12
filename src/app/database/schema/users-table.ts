@@ -1,3 +1,5 @@
+import type { ColumnType } from "kysely";
+
 export default interface UsersTable {
   user_id: string;
   username: string;
@@ -6,4 +8,5 @@ export default interface UsersTable {
   last_name?: string;
   created_at: Date;
   updated_at: Date;
+  password_hash: ColumnType<never, string>;
 }

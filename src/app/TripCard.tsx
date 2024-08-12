@@ -11,13 +11,14 @@ export interface TripCardProps {
 }
 
 export default function TripCard({ image, trip }: TripCardProps) {
-  const { location, name, startDate, endDate } = trip;
+  const { name, startDate, endDate } = trip;
 
   return (
     <Link tabIndex={0} className={styles.container} href={`/trip/${trip.id}`}>
       <img src={image} className={styles.cardImg} alt="Trip image" />
       <div className={styles.details}>
-        <div>{location}</div>
+        {/* TODO */}
+        <div>Location: TODO</div>
         <div>Bingo and Bluey</div>
         {startDate && (
           <div className={styles.date}>

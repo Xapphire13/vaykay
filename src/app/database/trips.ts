@@ -12,9 +12,9 @@ export type Trip = Awaited<ReturnType<typeof fetchTrips>>[number];
 const TRIP_SELECT_EXPRESSION = [
   "trip_id as id",
   "name",
-  "location",
   "start_date as startDate",
   "end_date as endDate",
+  "user_id as userId",
 ] as const;
 
 export async function fetchTrips() {
@@ -71,6 +71,7 @@ export default async function createNewTrip(formData: FormData) {
         name,
         start_date: startDate,
         end_date: endDate,
+        user_id: "", // TODO
       })
       .execute();
   } catch (e) {

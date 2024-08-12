@@ -1,0 +1,28 @@
+-- UP
+CREATE TABLE users (
+    user_id char(6) PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE trips
+DROP COLUMN IF EXISTS location,
+ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN user_id char(6),
+ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users (user_id);
+
+-- DOWN
+ALTER TABLE trips
+ADD COLUMN location varchar(255),
+DROP COLUMN IF EXISTS created_at,
+DROP COLUMN IF EXISTS updated_at,
+DROP FOREIGN KEY fk_user_id,
+DROP COLUMN IF EXISTS user_id;
+
+DROP TABLE IF EXISTS Users;

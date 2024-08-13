@@ -1,20 +1,15 @@
 "use server";
 import { redirect } from "next/navigation";
 import db from ".";
-import { generateNewId } from "./utils/id-utils";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
+import { customAlphabet } from "nanoid";
+import { alphanumeric } from "nanoid-dictionary";
+
+const nanoid = customAlphabet(alphanumeric, 6);
 
 export async function createUser(formData: FormData) {
-  const id = await generateNewId(async (newId) => {
-    const res = await db
-      .selectFrom("users")
-      .select("user_id")
-      .where("user_id", "=", newId)
-      .executeTakeFirst();
-
-    return !!res;
-  });
+  const id = nanoid();
 
   const username = formData.get("username")?.toString();
   const email = formData.get("email")?.toString();

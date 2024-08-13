@@ -1,8 +1,11 @@
 "use server";
+import { customAlphabet } from "nanoid";
+import { alphanumeric } from "nanoid-dictionary";
 import db from ".";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { generateNewId } from "./utils/id-utils";
+
+const nanoid = customAlphabet(alphanumeric, 6);
 
 export type Trip = Awaited<ReturnType<typeof fetchTrips>>[number];
 
@@ -37,15 +40,7 @@ export async function deleteTrip(id: string) {
 }
 
 export default async function createNewTrip(formData: FormData) {
-  const id = await generateNewId(async (newId) => {
-    const res = await db
-      .selectFrom("trips")
-      .select("trip_id")
-      .where("trip_id", "=", newId)
-      .executeTakeFirst();
-
-    return !!res;
-  });
+  const id = nanoid();
 
   const name = formData.get("name")?.toString();
   const startDate = formData.get("dates_start")?.toString();

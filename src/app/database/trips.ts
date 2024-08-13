@@ -4,6 +4,7 @@ import { alphanumeric } from "nanoid-dictionary";
 import db from ".";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { getAuthenticatedRequestContext } from "./utils/request-context";
 
 const nanoid = customAlphabet(alphanumeric, 6);
 
@@ -18,28 +19,39 @@ const TRIP_SELECT_EXPRESSION = [
 ] as const;
 
 export async function fetchTrips() {
+  const requestContext = await getAuthenticatedRequestContext();
   const rows = await db
     .selectFrom("trips")
     .select(TRIP_SELECT_EXPRESSION)
+    .where("user_id", "=", requestContext.userId)
     .execute();
 
   return rows;
 }
 
 export async function getTrip(id: string) {
+  const requestContext = await getAuthenticatedRequestContext();
+
   return await db
     .selectFrom("trips")
     .select(TRIP_SELECT_EXPRESSION)
     .where("trip_id", "=", id)
+    .where("user_id", "=", requestContext.userId)
     .executeTakeFirst();
 }
 
 export async function deleteTrip(id: string) {
-  await db.deleteFrom("trips").where("trip_id", "=", id).execute();
+  const requestContext = await getAuthenticatedRequestContext();
+  await db
+    .deleteFrom("trips")
+    .where("trip_id", "=", id)
+    .where("user_id", "=", requestContext.userId)
+    .execute();
   revalidatePath("/");
 }
 
 export default async function createNewTrip(formData: FormData) {
+  const requestContext = await getAuthenticatedRequestContext();
   const id = nanoid();
 
   const name = formData.get("name")?.toString();
@@ -56,7 +68,7 @@ export default async function createNewTrip(formData: FormData) {
         name,
         start_date: startDate,
         end_date: endDate,
-        user_id: "", // TODO
+        user_id: requestContext.userId,
       })
       .execute();
   } catch (e) {

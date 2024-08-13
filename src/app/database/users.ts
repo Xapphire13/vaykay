@@ -7,15 +7,9 @@ import { customAlphabet } from "nanoid";
 import { alphanumeric } from "nanoid-dictionary";
 import jwt from "jsonwebtoken";
 import ms from "ms";
+import { getJwtSecret } from "./utils/auth";
 
 const nanoid = customAlphabet(alphanumeric, 6);
-
-function getJwtSecret() {
-  const jwtSecret = process.env.JWT_SECRET;
-  if (!jwtSecret) throw new Error("JWT SECRET not defined");
-
-  return jwtSecret;
-}
 
 function setAuthCookies(userId: string) {
   const authToken = jwt.sign({ userId }, getJwtSecret(), {

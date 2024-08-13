@@ -5,8 +5,41 @@ import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 import { customAlphabet } from "nanoid";
 import { alphanumeric } from "nanoid-dictionary";
+import jwt from "jsonwebtoken";
+import ms from "ms";
 
 const nanoid = customAlphabet(alphanumeric, 6);
+
+function getJwtSecret() {
+  const jwtSecret = process.env.JWT_SECRET;
+  if (!jwtSecret) throw new Error("JWT SECRET not defined");
+
+  return jwtSecret;
+}
+
+function setAuthCookies(userId: string) {
+  const authToken = jwt.sign({ userId }, getJwtSecret(), {
+    expiresIn: "30d",
+  });
+
+  const cookieExpiry = Date.now() + ms("30d");
+
+  const cookieStore = cookies();
+  cookieStore.set({
+    name: "currentUser",
+    value: userId,
+    path: "/",
+    expires: cookieExpiry,
+  });
+  cookieStore.set({
+    name: "authToken",
+    value: authToken,
+    path: "/",
+    httpOnly: true,
+    secure: true,
+    expires: cookieExpiry,
+  });
+}
 
 export async function createUser(formData: FormData) {
   const id = nanoid();
@@ -42,7 +75,7 @@ export async function createUser(formData: FormData) {
     throw new Error("Couldn't create user");
   }
 
-  cookies().set({ name: "currentUser", value: id, path: "/" });
+  setAuthCookies(id);
   redirect("/");
 }
 
@@ -77,6 +110,6 @@ export async function authenticate(formData: FormData) {
     throw new Error(message);
   }
 
-  cookies().set({ name: "currentUser", value: userId, path: "/" });
+  setAuthCookies(userId);
   redirect("/");
 }

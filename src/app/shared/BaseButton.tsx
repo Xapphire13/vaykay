@@ -9,6 +9,7 @@ export interface BaseButtonProps {
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
   className?: string;
   href?: string;
+  disabled?: boolean;
 }
 
 export default function BaseButton({
@@ -17,6 +18,7 @@ export default function BaseButton({
   onPress,
   type = "button",
   href,
+  disabled,
 }: BaseButtonProps) {
   if (href) {
     return (
@@ -31,6 +33,7 @@ export default function BaseButton({
       className={classNames(styles.container, className)}
       type={type}
       onClick={onPress}
+      disabled={disabled}
     >
       {children}
     </button>

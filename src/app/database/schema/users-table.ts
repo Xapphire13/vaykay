@@ -8,5 +8,5 @@ export default interface UsersTable {
   last_name?: string;
   created_at: Date;
   updated_at: Date;
-  password_hash: ColumnType<never, string>;
+  password_hash: ColumnType<never, string, string>;
 }

@@ -7,7 +7,8 @@ import { customAlphabet } from "nanoid";
 import { alphanumeric } from "nanoid-dictionary";
 import jwt from "jsonwebtoken";
 import ms from "ms";
-import { getJwtSecret } from "./utils/auth";
+import { getJwtSecret, hashPassword } from "./utils/auth";
+import { getAuthenticatedRequestContext } from "./utils/request-context";
 
 const nanoid = customAlphabet(alphanumeric, 6);
 
@@ -49,7 +50,7 @@ export async function createUser(formData: FormData) {
   if (!password) throw new Error("Password is required");
   if (!email) throw new Error("Email is required");
 
-  const hashedPassword = await bcrypt.hash(password, 8);
+  const hashedPassword = await hashPassword(password);
 
   try {
     await db
@@ -106,4 +107,58 @@ export async function authenticate(formData: FormData) {
 
   setAuthCookies(userId);
   redirect("/");
+}
+
+export async function getUser() {
+  const requestContext = await getAuthenticatedRequestContext();
+  const user = await db
+    .selectFrom("users")
+    .select([
+      "user_id as id",
+      "username",
+      "email",
+      "first_name as firstName",
+      "last_name as lastName",
+      "created_at as createdAt",
+      "updated_at as updatedAt",
+    ])
+    .where("user_id", "=", requestContext.userId)
+    .executeTakeFirstOrThrow();
+
+  return user;
+}
+
+export async function updatePassword(_: unknown, formData: FormData) {
+  const requestContext = await getAuthenticatedRequestContext();
+  const oldPassword = formData.get("currentPassword")?.toString();
+  const newPassword = formData.get("newPassword")?.toString();
+
+  if (!oldPassword) throw new Error("Current password is required");
+  if (!newPassword) throw new Error("New password is required");
+
+  const user = await db
+    .selectFrom("users")
+    .select("password_hash")
+    .where("user_id", "=", requestContext.userId)
+    .executeTakeFirstOrThrow();
+
+  if (!(await bcrypt.compare(oldPassword, user.password_hash))) {
+    return {
+      error: "Invalid current password",
+    };
+  }
+
+  const newPasswordHash = await hashPassword(newPassword);
+
+  try {
+    await db
+      .updateTable("users")
+      .where("user_id", "=", requestContext.userId)
+      .set({ password_hash: newPasswordHash })
+      .execute();
+  } catch {
+    return { result: false };
+  }
+
+  return { result: true };
 }

@@ -8,11 +8,11 @@ export default interface RequestContext {
   userId: string;
 }
 
-export async function getAuthenticatedRequestContext(): Promise<RequestContext> {
+export async function getAuthenticatedRequestContext(): Promise<RequestContext | null> {
   const cookieStore = cookies();
   const authToken = cookieStore.get("authToken")?.value;
 
-  if (!authToken) throw new Error("Auth token missing");
+  if (!authToken) return null;
 
   const verifiedToken = jwt.verify(authToken, getJwtSecret());
 

@@ -16,7 +16,7 @@ export default async function Header() {
       </Link>
 
       <div className={styles.content}>
-        <div>Hello {user.firstName}!</div>
+        <div>Hello {user?.firstName}!</div>
         <IconButton label="Account" href="/account">
           <PersonCircle size={40} color="white" />
         </IconButton>

@@ -111,6 +111,9 @@ export async function authenticate(formData: FormData) {
 
 export async function getUser() {
   const requestContext = await getAuthenticatedRequestContext();
+
+  if (!requestContext) return null;
+
   const user = await db
     .selectFrom("users")
     .select([
@@ -133,8 +136,9 @@ export async function updatePassword(_: unknown, formData: FormData) {
   const oldPassword = formData.get("currentPassword")?.toString();
   const newPassword = formData.get("newPassword")?.toString();
 
-  if (!oldPassword) throw new Error("Current password is required");
-  if (!newPassword) throw new Error("New password is required");
+  if (!requestContext) return { error: "Unauthorized" };
+  if (!oldPassword) return { error: "Current password is required" };
+  if (!newPassword) return { error: "New password is required" };
 
   const user = await db
     .selectFrom("users")

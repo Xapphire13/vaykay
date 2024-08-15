@@ -20,6 +20,9 @@ const TRIP_SELECT_EXPRESSION = [
 
 export async function fetchTrips() {
   const requestContext = await getAuthenticatedRequestContext();
+
+  if (!requestContext) throw new Error("Unauthorized");
+
   const rows = await db
     .selectFrom("trips")
     .select(TRIP_SELECT_EXPRESSION)
@@ -32,6 +35,8 @@ export async function fetchTrips() {
 export async function getTrip(id: string) {
   const requestContext = await getAuthenticatedRequestContext();
 
+  if (!requestContext) throw new Error("Unauthorized");
+
   return await db
     .selectFrom("trips")
     .select(TRIP_SELECT_EXPRESSION)
@@ -42,6 +47,9 @@ export async function getTrip(id: string) {
 
 export async function deleteTrip(id: string) {
   const requestContext = await getAuthenticatedRequestContext();
+
+  if (!requestContext) throw new Error("Unauthorized");
+
   await db
     .deleteFrom("trips")
     .where("trip_id", "=", id)
@@ -52,13 +60,15 @@ export async function deleteTrip(id: string) {
 
 export default async function createNewTrip(formData: FormData) {
   const requestContext = await getAuthenticatedRequestContext();
-  const id = nanoid();
 
+  if (!requestContext) return { error: "Unauthorized" };
+
+  const id = nanoid();
   const name = formData.get("name")?.toString();
   const startDate = formData.get("dates_start")?.toString();
   const endDate = formData.get("dates_end")?.toString();
 
-  if (!name) throw new Error("Trip name is required");
+  if (!name) return { error: "Trip name is required" };
 
   try {
     await db
@@ -71,12 +81,8 @@ export default async function createNewTrip(formData: FormData) {
         user_id: requestContext.userId,
       })
       .execute();
-  } catch (e) {
-    let message = "Failed to create trip";
-    if (process.env.NODE_ENV === "development") {
-      message += `: ${e}`;
-    }
-    throw new Error(message);
+  } catch {
+    return { error: "Failed to create trip" };
   }
 
   revalidatePath("/");

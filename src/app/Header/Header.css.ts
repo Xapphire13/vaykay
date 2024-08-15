@@ -24,4 +24,5 @@ export const content = style({
   alignItems: "center",
   color: theme.palette.white,
   padding: theme.spacing.small16px,
+  gap: theme.spacing.small16px,
 });

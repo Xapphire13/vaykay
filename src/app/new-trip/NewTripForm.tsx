@@ -8,8 +8,10 @@ import formStyles from "../shared/forms/forms.css";
 import PrimaryButton from "../shared/PrimaryButton";
 import createNewTrip from "../database/trips";
 import styles from "./NewTripForm.css";
+import useLocationSearch from "./useLocationSearch";
 
 export default function NewTripForm() {
+  const locationSearch = useLocationSearch();
   const [showDateRange, setShowDateRange] = useState(true);
 
   const handleDatesUnsureChanged = (isChecked: boolean) => {
@@ -32,12 +34,15 @@ export default function NewTripForm() {
       </div>
 
       <InputList
+        id="locations"
         label="Where are you going?"
         hint="Don't worry if you're unsure, you can add this later"
         placeholder="Search..."
+        provideSearchResults={locationSearch}
       />
 
       <InputList
+        id="party"
         label="Who are you going with?"
         hint="Don't worry if you're unsure, you can add this later"
         placeholder="Enter email..."

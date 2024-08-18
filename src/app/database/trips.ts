@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { getAuthenticatedRequestContext } from "./utils/request-context";
 import type { SelectExpression } from "kysely";
 import type Database from "./schema/database";
+import type { TCountryCode } from "countries-list";
 
 const nanoid = customAlphabet(alphanumeric, 6);
 
@@ -72,7 +73,9 @@ export default async function createNewTrip(formData: FormData) {
   const name = formData.get("name")?.toString();
   const startDate = formData.get("dates_start")?.toString();
   const endDate = formData.get("dates_end")?.toString();
-  const countries = formData.get("countries")?.toString().split(", ");
+  const countries = formData.get("countries")?.toString().split(", ") as
+    | TCountryCode[]
+    | undefined;
 
   if (!name) return { error: "Trip name is required" };
 

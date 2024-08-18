@@ -1,3 +1,4 @@
+import type { TCountryCode } from "countries-list";
 import type { ColumnType } from "kysely";
 
 export default interface TripsTable {
@@ -6,5 +7,5 @@ export default interface TripsTable {
   start_date?: ColumnType<Date, string>;
   end_date?: ColumnType<Date, string>;
   user_id: string;
-  country_codes?: string[];
+  country_codes?: TCountryCode[];
 }

@@ -9,10 +9,12 @@ import PrimaryButton from "../shared/PrimaryButton";
 import createNewTrip from "../database/trips";
 import styles from "./NewTripForm.css";
 import useLocationSearch from "./useLocationSearch";
+import { countries } from "countries-list";
 
 export default function NewTripForm() {
   const locationSearch = useLocationSearch();
   const [showDateRange, setShowDateRange] = useState(true);
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
 
   const handleDatesUnsureChanged = (isChecked: boolean) => {
     setShowDateRange(!isChecked);
@@ -39,6 +41,20 @@ export default function NewTripForm() {
         hint="Don't worry if you're unsure, you can add this later"
         placeholder="Search..."
         provideSearchResults={locationSearch}
+        values={selectedCountries}
+        onValuesChanged={setSelectedCountries}
+      />
+      <input
+        type="hidden"
+        name="countries"
+        value={selectedCountries
+          .map(
+            (countryName) =>
+              Object.entries(countries).find(
+                ([, { name }]) => name === countryName
+              )?.[0]
+          )
+          .join(", ")}
       />
 
       <InputList
@@ -46,6 +62,8 @@ export default function NewTripForm() {
         label="Who are you going with?"
         hint="Don't worry if you're unsure, you can add this later"
         placeholder="Enter email..."
+        values={[]}
+        onValuesChanged={() => {}}
       />
 
       <PrimaryButton className={styles.submitButton} type="submit">

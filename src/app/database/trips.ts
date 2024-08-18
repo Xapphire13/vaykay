@@ -5,18 +5,23 @@ import db from ".";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getAuthenticatedRequestContext } from "./utils/request-context";
+import type { SelectExpression } from "kysely";
+import type Database from "./schema/database";
 
 const nanoid = customAlphabet(alphanumeric, 6);
 
 export type Trip = Awaited<ReturnType<typeof fetchTrips>>[number];
 
-const TRIP_SELECT_EXPRESSION = [
+const TRIP_SELECT_EXPRESSION: ReadonlyArray<
+  SelectExpression<Database, "trips">
+> = [
   "trip_id as id",
   "name",
   "start_date as startDate",
   "end_date as endDate",
   "user_id as userId",
-] as const;
+  "country_codes",
+];
 
 export async function fetchTrips() {
   const requestContext = await getAuthenticatedRequestContext();
@@ -67,6 +72,7 @@ export default async function createNewTrip(formData: FormData) {
   const name = formData.get("name")?.toString();
   const startDate = formData.get("dates_start")?.toString();
   const endDate = formData.get("dates_end")?.toString();
+  const countries = formData.get("countries")?.toString().split(", ");
 
   if (!name) return { error: "Trip name is required" };
 
@@ -79,6 +85,7 @@ export default async function createNewTrip(formData: FormData) {
         start_date: startDate,
         end_date: endDate,
         user_id: requestContext.userId,
+        country_codes: countries,
       })
       .execute();
   } catch {

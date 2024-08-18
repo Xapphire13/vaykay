@@ -4,6 +4,8 @@ import { format } from "date-fns/format";
 import Link from "next/link";
 import { isEqual } from "date-fns";
 import type { Trip } from "./database/trips";
+import type { TCountryCode } from "countries-list";
+import { countries } from "countries-list";
 
 export interface TripCardProps {
   image: string;
@@ -17,7 +19,10 @@ export default function TripCard({ image, trip }: TripCardProps) {
     <Link tabIndex={0} className={styles.container} href={`/trip/${trip.id}`}>
       <img src={image} className={styles.cardImg} alt="Trip image" />
       <div className={styles.details}>
-        {/* TODO */}
+        {trip.country_codes
+          ?.map((countryCode) => countryCode as TCountryCode)
+          .map((countryCode) => countries[countryCode].name)
+          .join(", ")}
         <div>Location: TODO</div>
         <div>Bingo and Bluey</div>
         {startDate && (

@@ -8,6 +8,8 @@ interface InputListProps {
   hint?: string;
   placeholder?: string;
   provideSearchResults?: (query: string) => string[];
+  values: string[];
+  onValuesChanged: (newValues: string[]) => void;
 }
 
 export default function InputList({
@@ -16,13 +18,30 @@ export default function InputList({
   placeholder,
   id,
   provideSearchResults,
+  values,
+  onValuesChanged,
 }: InputListProps) {
   const [searchResults, setSearchResults] = useState<string[]>([]);
 
-  const handleKeyUp: KeyboardEventHandler<HTMLInputElement> = (ev) => {
-    const query = ev.currentTarget.value;
+  const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (ev) => {
+    const input = ev.currentTarget;
+    const query = input.value;
+    const valueSet = new Set(values);
+    const results =
+      provideSearchResults?.(query).filter((result) => !valueSet.has(result)) ??
+      [];
 
-    const results = provideSearchResults?.(query) ?? [];
+    if (
+      ev.key === "Enter" &&
+      results.at(0)?.toLowerCase() === query.toLowerCase()
+    ) {
+      onValuesChanged([...values, results[0]]);
+      input.value = "";
+      setSearchResults([]);
+      ev.preventDefault();
+      return;
+    }
+
     setSearchResults(results);
   };
 
@@ -34,7 +53,7 @@ export default function InputList({
         hint={hint}
         placeholder={placeholder}
         list={searchResults.length ? `${id}-search-results` : undefined}
-        onKeyUp={handleKeyUp}
+        onKeyDown={handleKeyDown}
       />
       {searchResults.length !== 0 && (
         <datalist id={`${id}-search-results`}>
@@ -42,6 +61,13 @@ export default function InputList({
             <option key={country} value={country} />
           ))}
         </datalist>
+      )}
+      {values && (
+        <ul>
+          {values.map((value) => (
+            <li key={value}>{value}</li>
+          ))}
+        </ul>
       )}
     </div>
   );

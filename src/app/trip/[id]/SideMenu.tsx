@@ -13,7 +13,7 @@ import { SuitcaseLg } from "react-bootstrap-icons";
 import { FileEarmarkCheckFill } from "react-bootstrap-icons";
 import { Map } from "react-bootstrap-icons";
 import SideMenuChoice from "./SideMenuChoice";
-import classNames from "classnames";
+import clsx from "clsx";
 
 interface SideMenuProps {
   tripId: string;
@@ -22,7 +22,7 @@ interface SideMenuProps {
 
 export default function SideMenu({ tripId, className }: SideMenuProps) {
   return (
-    <div className={classNames(styles.container, className)}>
+    <div className={clsx(styles.container, className)}>
       <SideMenuChoice
         icon={<Hospital className={styles.icon} size={40} />}
         iconText="Emergency Numbers"

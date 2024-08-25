@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./IconButton.css";
-import cx from "classnames";
 import Link from "next/link";
+import clsx from "clsx";
 
 export interface IconButtonProps {
   className?: string;
@@ -22,7 +22,7 @@ export default function IconButton({
     return (
       <Link
         aria-label={label}
-        className={cx(styles.container, className)}
+        className={clsx(styles.container, className)}
         href={href}
       >
         {children}
@@ -33,7 +33,7 @@ export default function IconButton({
   return (
     <button
       aria-label={label}
-      className={cx(styles.container, className)}
+      className={clsx(styles.container, className)}
       onClick={onPress}
     >
       {children}

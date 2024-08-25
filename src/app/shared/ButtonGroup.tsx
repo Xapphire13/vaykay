@@ -1,5 +1,5 @@
-import classNames from "classnames";
 import styles from "./ButtonGroup.css";
+import clsx from "clsx";
 
 interface ButtonGroupProps {
   className?: string;
@@ -7,7 +7,5 @@ interface ButtonGroupProps {
 }
 
 export default function ButtonGroup({ children, className }: ButtonGroupProps) {
-  return (
-    <div className={classNames(styles.container, className)}>{children}</div>
-  );
+  return <div className={clsx(styles.container, className)}>{children}</div>;
 }

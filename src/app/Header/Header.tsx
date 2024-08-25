@@ -16,10 +16,14 @@ export default async function Header() {
       </Link>
 
       <div className={styles.content}>
-        <div>Hello {user?.firstName}!</div>
-        <IconButton label="Account" href="/account">
-          <PersonCircle size={40} color="white" />
-        </IconButton>
+        {user && (
+          <>
+            <div>Hello {user.firstName}!</div>
+            <IconButton label="Account" href="/account">
+              <PersonCircle size={40} color="white" />
+            </IconButton>
+          </>
+        )}
         <AppMenuButton />
       </div>
     </header>

@@ -1,6 +1,5 @@
-import TravelerEmergencyContactTable, {
-  TravelerEmerContact,
-} from "@/app/trip/[id]/@tabs/numbers/TravelerEmergencyContactTable";
+import type { TravelerEmerContact } from "@/app/trip/[id]/@tabs/numbers/TravelerEmergencyContactTable";
+import TravelerEmergencyContactTable from "@/app/trip/[id]/@tabs/numbers/TravelerEmergencyContactTable";
 
 const travelerList: TravelerEmerContact[] = [
   {

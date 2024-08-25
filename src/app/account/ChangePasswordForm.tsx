@@ -83,6 +83,7 @@ export default function ChangePasswordForm() {
           type="password"
           label="Re-type new password"
           required
+          // @ts-expect-error onBlue type seems off
           onBlur={handleRetypedPasswordBlur}
         />
         {passwordMismatch && <div>Passwords must match!</div>}

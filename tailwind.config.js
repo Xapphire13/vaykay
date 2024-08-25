@@ -24,6 +24,7 @@ module.exports = {
               DEFAULT: "hsl(154, 79%, 87%)",
               foreground: "hsl(154, 79%, 15%)",
             },
+            default: { foreground: "hsl(326, 59%, 57%)" },
           },
         },
       },

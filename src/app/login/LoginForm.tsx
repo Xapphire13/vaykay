@@ -16,7 +16,7 @@ export default function LoginForm({
     <form className={styles.formContainer} action={authenticate}>
       <Input name="username" label="Username" required />
       <Input name="password" label="Password" type="password" required />
-      <ButtonGroup className={styles.buttonGroup}>
+      <ButtonGroup>
         <PrimaryButton type="submit">Login</PrimaryButton>
         <SecondaryButton onPress={onCreateAccount}>
           Create account

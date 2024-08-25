@@ -25,8 +25,8 @@ export default function DateRange({
         end: today(getLocalTimeZone()),
       }}
       minValue={today(getLocalTimeZone())}
-      startName={`${name}_start`}
-      endName={`${name}_end`}
+      startName={isDisabled ? undefined : `${name}_start`}
+      endName={isDisabled ? undefined : `${name}_end`}
     />
   );
 }

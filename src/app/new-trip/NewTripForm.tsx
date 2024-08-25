@@ -45,7 +45,6 @@ export default function NewTripForm() {
       <InputList
         id="locations"
         label="Where are you going?"
-        hint="Don't worry if you're unsure, you can add this later"
         placeholder="Search..."
         provideSearchResults={locationSearch}
         values={selectedCountries}
@@ -67,7 +66,6 @@ export default function NewTripForm() {
       <InputList
         id="party"
         label="Who are you going with?"
-        hint="Don't worry if you're unsure, you can add this later"
         placeholder="Enter email..."
         values={[]}
         onValuesChanged={() => {}}

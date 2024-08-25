@@ -5,7 +5,6 @@ import Input from "./Input";
 interface InputListProps {
   id: string;
   label: string;
-  hint?: string;
   placeholder?: string;
   provideSearchResults?: (query: string) => string[];
   values: string[];
@@ -14,31 +13,45 @@ interface InputListProps {
 
 export default function InputList({
   label,
-  hint,
   placeholder,
   id,
   provideSearchResults,
   values,
   onValuesChanged,
 }: InputListProps) {
+  const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState<string[]>([]);
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (ev) => {
-    const input = ev.currentTarget;
-    const query = input.value;
+    const valueSet = new Set(values);
+    const results =
+      provideSearchResults?.(query).filter((result) => !valueSet.has(result)) ??
+      [];
+
+    if (ev.key === "Enter") {
+      if (results.at(0)?.toLowerCase() === query.toLowerCase()) {
+        onValuesChanged([...values, results[0]]);
+        setQuery("");
+        setSearchResults([]);
+      }
+
+      ev.preventDefault();
+    }
+  };
+
+  const handleKeyUp: KeyboardEventHandler<HTMLInputElement> = (ev) => {
     const valueSet = new Set(values);
     const results =
       provideSearchResults?.(query).filter((result) => !valueSet.has(result)) ??
       [];
 
     if (
-      ev.key === "Enter" &&
+      ev.key === "Unidentified" &&
       results.at(0)?.toLowerCase() === query.toLowerCase()
     ) {
       onValuesChanged([...values, results[0]]);
-      input.value = "";
+      setQuery("");
       setSearchResults([]);
-      ev.preventDefault();
       return;
     }
 
@@ -50,11 +63,12 @@ export default function InputList({
       <Input
         id={id}
         label={label}
-        // TODO
-        // hint={hint}
         placeholder={placeholder}
         list={searchResults.length ? `${id}-search-results` : undefined}
         onKeyDown={handleKeyDown}
+        onKeyUp={handleKeyUp}
+        value={query}
+        onValueChange={setQuery}
       />
       {searchResults.length !== 0 && (
         <datalist id={`${id}-search-results`}>

@@ -1,19 +1,6 @@
-import type { InputHTMLAttributes } from "react";
-import formStyles from "./forms.css";
+import type { InputProps } from "@nextui-org/input";
+import { Input as NextUiInput } from "@nextui-org/input";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  hint?: string;
-}
-
-export default function Input({ label, hint, ...inputProps }: InputProps) {
-  return (
-    <div>
-      <label>
-        <div className={formStyles.label}>{label}</div>
-        {hint && <div className={formStyles.hint}>{hint}</div>}
-        <input {...inputProps} />
-      </label>
-    </div>
-  );
+export default function Input(props: InputProps) {
+  return <NextUiInput variant="bordered" {...props} />;
 }

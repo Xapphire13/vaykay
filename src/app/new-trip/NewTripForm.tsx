@@ -1,23 +1,22 @@
 "use client";
 import { useState } from "react";
-import Checkbox from "../shared/forms/Checkbox";
 import DateRange from "../shared/forms/DateRange";
-import Input from "../shared/forms/Input";
 import InputList from "../shared/forms/InputList";
-import formStyles from "../shared/forms/forms.css";
 import PrimaryButton from "../shared/PrimaryButton";
 import createNewTrip from "../database/trips";
 import styles from "./NewTripForm.css";
 import useLocationSearch from "./useLocationSearch";
 import { countries } from "countries-list";
+import Input from "../shared/forms/Input";
+import { Checkbox } from "@nextui-org/checkbox";
 
 export default function NewTripForm() {
   const locationSearch = useLocationSearch();
-  const [showDateRange, setShowDateRange] = useState(true);
+  const [datesAreKnown, setDatesAreKnown] = useState(true);
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
 
   const handleDatesUnsureChanged = (isChecked: boolean) => {
-    setShowDateRange(!isChecked);
+    setDatesAreKnown(!isChecked);
   };
 
   return (
@@ -29,10 +28,18 @@ export default function NewTripForm() {
         placeholder="Ex. Best vaycay ever!"
       />
 
-      <div>
-        <div className={formStyles.label}>When is it?</div>
-        {showDateRange && <DateRange name="dates" />}
-        <Checkbox label="Unsure" onChange={handleDatesUnsureChanged} />
+      <div className={styles.dateRangeRow}>
+        <DateRange
+          name="dates"
+          label="When is it?"
+          isDisabled={!datesAreKnown}
+        />
+        <Checkbox
+          className={styles.dateRangeCheckbox}
+          onValueChange={handleDatesUnsureChanged}
+        >
+          Unsure
+        </Checkbox>
       </div>
 
       <InputList

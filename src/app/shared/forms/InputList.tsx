@@ -50,7 +50,8 @@ export default function InputList({
       <Input
         id={id}
         label={label}
-        hint={hint}
+        // TODO
+        // hint={hint}
         placeholder={placeholder}
         list={searchResults.length ? `${id}-search-results` : undefined}
         onKeyDown={handleKeyDown}

@@ -4,7 +4,8 @@ import Input from "../shared/forms/Input";
 import InputGroup from "../shared/forms/InputGroup";
 import PrimaryButton from "../shared/PrimaryButton";
 import SecondaryButton from "../shared/SecondaryButton";
-import styles from "./page.css";
+import loginPageStyles from "./page.css";
+import styles from "./CreateAccountForm.css";
 
 interface CreateAccountFormProps {
   onCancel: () => void;
@@ -14,7 +15,7 @@ export default function CreateAccountForm({
   onCancel,
 }: CreateAccountFormProps) {
   return (
-    <form className={styles.formContainer} action={createUser}>
+    <form className={loginPageStyles.formContainer} action={createUser}>
       <Input name="username" label="Username" required />
       <Input name="email" label="Email" required />
 
@@ -28,9 +29,13 @@ export default function CreateAccountForm({
         {/* TODO, validate */}
         <Input label="Re-enter Password" type="password" required />
       </InputGroup>
-      <ButtonGroup className={styles.buttonGroup}>
-        <PrimaryButton type="submit">Create</PrimaryButton>
-        <SecondaryButton onPress={onCancel}>Cancel</SecondaryButton>
+      <ButtonGroup>
+        <PrimaryButton className={styles.button} type="submit" fullWidth>
+          Create
+        </PrimaryButton>
+        <SecondaryButton className={styles.button} onPress={onCancel}>
+          Cancel
+        </SecondaryButton>
       </ButtonGroup>
     </form>
   );

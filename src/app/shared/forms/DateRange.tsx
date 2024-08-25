@@ -1,36 +1,32 @@
-import { useState } from "react";
-import styles from "./DateRange.css";
-import { formatISO, parseISO } from "date-fns";
+import { DateRangePicker } from "@nextui-org/date-picker";
+import { getLocalTimeZone, today } from "@internationalized/date";
 
 interface DateRangeProps {
   name: string;
+  label: string;
+  className?: string;
+  isDisabled?: boolean;
 }
 
-export default function DateRange({ name }: DateRangeProps) {
-  const [start, setStart] = useState(new Date());
-  const [end, setEnd] = useState(new Date());
-
+export default function DateRange({
+  name,
+  label,
+  className,
+  isDisabled,
+}: DateRangeProps) {
   return (
-    <div className={styles.container}>
-      <label>
-        Start{" "}
-        <input
-          name={`${name}_start`}
-          type="date"
-          value={formatISO(start, { representation: "date" })}
-          onChange={(ev) => setStart(parseISO(ev.target.value))}
-        />
-      </label>
-      <label>
-        End{" "}
-        <input
-          name={`${name}_end`}
-          type="date"
-          min={formatISO(start, { representation: "date" })}
-          value={formatISO(end, { representation: "date" })}
-          onChange={(ev) => setEnd(parseISO(ev.target.value))}
-        />
-      </label>
-    </div>
+    <DateRangePicker
+      className={className}
+      variant="bordered"
+      isDisabled={isDisabled}
+      label={label}
+      defaultValue={{
+        start: today(getLocalTimeZone()),
+        end: today(getLocalTimeZone()),
+      }}
+      minValue={today(getLocalTimeZone())}
+      startName={`${name}_start`}
+      endName={`${name}_end`}
+    />
   );
 }

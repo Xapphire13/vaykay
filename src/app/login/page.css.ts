@@ -18,7 +18,4 @@ export default {
     flexDirection: "column",
     alignItems: "center",
   }),
-  buttonGroup: style({
-    alignSelf: "center",
-  }),
 };

@@ -1,9 +1,6 @@
-import type { BaseButtonProps } from "./BaseButton";
-import BaseButton from "./BaseButton";
-import styles from "./PrimaryButton.css";
+import type { ButtonProps } from "@nextui-org/button";
+import { Button } from "@nextui-org/button";
 
-type PrimaryButtonProps = BaseButtonProps;
-
-export default function PrimaryButton(props: PrimaryButtonProps) {
-  return <BaseButton {...props} className={styles.container} />;
+export default function PrimaryButton(props: ButtonProps) {
+  return <Button color="primary" {...props} />;
 }

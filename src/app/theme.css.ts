@@ -158,9 +158,3 @@ globalStyle("a", {
   color: "inherit",
   textDecoration: "none",
 });
-
-globalStyle("button", {
-  background: "none",
-  border: "none",
-  cursor: "pointer",
-});

@@ -13,6 +13,17 @@ export default {
     gap: theme.spacing.small16px,
   }),
   submitButton: style({
-    alignSelf: "center",
+    alignSelf: "stretch",
+  }),
+  dateRangeRow: style({
+    display: "flex",
+    flexDirection: "row",
+    gap: theme.spacing.small8px,
+  }),
+  dateRange: style({
+    flexGrow: 1,
+  }),
+  dateRangeCheckbox: style({
+    flexShrink: 1,
   }),
 };

@@ -2,9 +2,6 @@ import { theme } from "@/app/theme.css";
 import { style } from "@vanilla-extract/css";
 
 export default {
-  label: style({
-    fontWeight: "bold",
-  }),
   hint: style({
     fontWeight: "lighter",
     fontSize: theme.typography.size.small14px,

@@ -5,24 +5,20 @@ import db from ".";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getAuthenticatedRequestContext } from "./utils/request-context";
-import type { SelectExpression } from "kysely";
-import type Database from "./schema/database";
 import type { TCountryCode } from "countries-list";
 
 const nanoid = customAlphabet(alphanumeric, 6);
 
 export type Trip = Awaited<ReturnType<typeof fetchTrips>>[number];
 
-const TRIP_SELECT_EXPRESSION: ReadonlyArray<
-  SelectExpression<Database, "trips">
-> = [
+const TRIP_SELECT_EXPRESSION = [
   "trip_id as id",
   "name",
   "start_date as startDate",
   "end_date as endDate",
   "user_id as userId",
-  "country_codes",
-];
+  "country_codes as countryCodes",
+] as const;
 
 export async function fetchTrips() {
   const requestContext = await getAuthenticatedRequestContext();

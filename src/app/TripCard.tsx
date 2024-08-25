@@ -18,10 +18,14 @@ export default function TripCard({ image, trip }: TripCardProps) {
     <Link tabIndex={0} className={styles.container} href={`/trip/${trip.id}`}>
       <img src={image} className={styles.cardImg} alt="Trip image" />
       <div className={styles.details}>
-        {trip.country_codes
-          ?.map((countryCode) => countries[countryCode].name)
-          .join(", ")}
-        <div>Location: TODO</div>
+        {trip.countryCodes && (
+          <div>
+            Location:{" "}
+            {trip.countryCodes
+              ?.map((countryCode) => countries[countryCode].name)
+              .join(", ")}
+          </div>
+        )}
         <div>Bingo and Bluey</div>
         {startDate && (
           <div className={styles.date}>

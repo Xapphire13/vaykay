@@ -3,10 +3,8 @@ import { theme } from "../../theme.css";
 
 export const container = style({
   background: theme.palette.pink500,
-  padding: theme.spacing.medium32px,
   borderRadius: `0 ${theme.cornerRadius.medium} ${theme.cornerRadius.medium} 0`,
   color: theme.palette.pink100,
-  width: "100px",
   fontSize: theme.typography.size.large36px,
   display: "flex",
   flexDirection: "column",
@@ -20,16 +18,12 @@ export const indvContainer = style({
   },
   display: "flex",
   flexDirection: "column",
-  width: "100px",
   borderBottom: `medium solid ${theme.palette.pink100}`,
+  padding: theme.spacing.small12px,
 });
 
 export const icon = style({
   color: theme.palette.pink100,
-  height: "64px",
-  width: "64px",
-  paddingTop: theme.spacing.small16px,
-  paddingBottom: theme.spacing.small8px,
 });
 
 export const description = style({

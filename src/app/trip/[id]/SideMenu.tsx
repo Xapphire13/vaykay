@@ -24,57 +24,57 @@ export default function SideMenu({ tripId, className }: SideMenuProps) {
   return (
     <div className={classNames(styles.container, className)}>
       <SideMenuChoice
-        icon={<Hospital className={styles.icon} />}
+        icon={<Hospital className={styles.icon} size={40} />}
         iconText="Emergency Numbers"
         href={`/trip/${tripId}/numbers`}
       />
       <SideMenuChoice
-        icon={<AirplaneEngines className={styles.icon} />}
+        icon={<AirplaneEngines className={styles.icon} size={40} />}
         iconText="Flights"
         href={`/trip/${tripId}/flights`}
       />
       <SideMenuChoice
-        icon={<House className={styles.icon} />}
+        icon={<House className={styles.icon} size={40} />}
         iconText="Accommodation"
         href={`/trip/${tripId}/accommodation`}
       />
       <SideMenuChoice
-        icon={<BusFront className={styles.icon} />}
+        icon={<BusFront className={styles.icon} size={40} />}
         iconText="Transportation"
         href={`/trip/${tripId}/transport`}
       />
       <SideMenuChoice
-        icon={<Passport className={styles.icon} />}
+        icon={<Passport className={styles.icon} size={40} />}
         iconText="Important Docs"
         href={`/trip/${tripId}/docs`}
       />
       <SideMenuChoice
-        icon={<TicketPerforated className={styles.icon} />}
+        icon={<TicketPerforated className={styles.icon} size={40} />}
         iconText="Booked Activities"
         href={`/trip/${tripId}/activities`}
       />
       <SideMenuChoice
-        icon={<CupStraw className={styles.icon} />}
+        icon={<CupStraw className={styles.icon} size={40} />}
         iconText="Dining"
         href={`/trip/${tripId}/dining`}
       />
       <SideMenuChoice
-        icon={<Cash className={styles.icon} />}
+        icon={<Cash className={styles.icon} size={40} />}
         iconText="Cost Breakdown"
         href={`/trip/${tripId}/cost`}
       />
       <SideMenuChoice
-        icon={<SuitcaseLg className={styles.icon} />}
+        icon={<SuitcaseLg className={styles.icon} size={40} />}
         iconText="Packing Checklist"
         href={`/trip/${tripId}/packing`}
       />
       <SideMenuChoice
-        icon={<FileEarmarkCheckFill className={styles.icon} />}
+        icon={<FileEarmarkCheckFill className={styles.icon} size={40} />}
         iconText="Itinerary"
         href={`/trip/${tripId}/itinerary`}
       />
       <SideMenuChoice
-        icon={<Map className={styles.icon} />}
+        icon={<Map className={styles.icon} size={40} />}
         iconText="Map View"
         href={`/trip/${tripId}/map`}
       />

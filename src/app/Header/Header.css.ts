@@ -14,6 +14,7 @@ export const brand = style({
   borderRight: `${theme.spacing.small4px} solid ${theme.palette.white}`,
   fontWeight: "bold",
   fontSize: theme.typography.size.large36px,
+  height: "100%",
 });
 
 export const content = style({

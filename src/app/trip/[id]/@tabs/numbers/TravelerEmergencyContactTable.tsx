@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./TravelerEmerContact.css";
+import * as styles from "./TravelerEmergencyContactTable.css";
 import { PlusLg } from "react-bootstrap-icons";
 
 export interface TravelerEmerContact {

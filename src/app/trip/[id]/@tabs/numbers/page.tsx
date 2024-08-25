@@ -1,6 +1,6 @@
 import TravelerEmergencyContactTable, {
   TravelerEmerContact,
-} from "@/app/trip/emergency/TravelerEmergencyContactTable";
+} from "@/app/trip/[id]/@tabs/numbers/TravelerEmergencyContactTable";
 
 const travelerList: TravelerEmerContact[] = [
   {

@@ -19,7 +19,7 @@ export default function TripLayout({
       {children}
       <div className={styles.container}>
         <SideMenu className={styles.sideNav} tripId={id} />
-        <div className={styles.tabsContainer}>{tabs}</div>
+        <main className={styles.tabsContainer}>{tabs}</main>
       </div>
     </>
   );

@@ -1,20 +1,23 @@
 import React from "react";
-import * as styles from "./SideMenu.css";
+import styles from "./SideMenu.css";
 import Link from "next/link";
+import clsx from "clsx";
 
 interface SideMenuChoiceProps {
   icon: React.ReactNode;
   iconText: React.ReactNode;
   href?: string;
+  isActive?: boolean;
 }
 
 export default function SideMenuChoice({
   icon,
   iconText,
   href,
+  isActive = false,
 }: SideMenuChoiceProps) {
   const content = (
-    <div className={styles.indvContainer}>
+    <div className={clsx(styles.indvContainer, isActive && styles.activeTab)}>
       <button>{icon}</button>
       <div className={styles.description}>{iconText}</div>
     </div>
